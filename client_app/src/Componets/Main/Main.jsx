@@ -5,12 +5,15 @@ import { Header } from "../Header/Header";
 import { Button } from "../Button/Button";
 import "./main.css";
 import styled from "styled-components";
+import { Footer } from "../Footer/Footer";
 
 const Textarea = styled.textarea`
   border: none;
   resize: none;
   opacity: none;
   visibility: hidden;
+  width: 1px;
+  height: 1px;
 `;
 
 const Main = () => {
@@ -64,7 +67,7 @@ const Main = () => {
   }, [getVoice]);
 
   return (
-    <div>
+    <div className="main">
       <Header />
       <Email />
       <Textarea
@@ -78,7 +81,6 @@ const Main = () => {
           SetVoice(event.target.value);
         }}
       ></Textarea>
-
       <div className="Parent-ListenAndSpeekBtns">
         <button
           className="btn-Speak"

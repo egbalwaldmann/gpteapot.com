@@ -38,12 +38,13 @@ const LinkedinAuth = () => {
       </div>
       <p>
         Imprint | Privacy |
-        <span style={{marginLeft: "4px", display: "inline-block"}}>
+        <span style={{ marginLeft: "4px", display: "inline-block" }}>
           <Link to={`https://github.com/egbalwaldmann/gpteapot.com`}>
             GitHub
           </Link>
         </span>
       </p>
+      <p>Egbal Waldmann</p>
     </div>
   );
 };
