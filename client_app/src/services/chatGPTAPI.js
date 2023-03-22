@@ -5,8 +5,8 @@ myHeaders.append(
 );
 myHeaders.append("Content-Type", "application/json");
 
-const url = "https://api.openai.com/v1/completions";
-
+// const url = "https://api.openai.com/v1/completions";
+const url = "https://api.openai.com/v1/chat/completions";
 export const PostQustionToChatGPT = async (
   raw,
   SetResultChatGPT,
@@ -21,5 +21,4 @@ export const PostQustionToChatGPT = async (
   const response = await fetch(url, requestOptions);
   const data = await response.json();
   await SetResultChatGPT(data);
-
 };
