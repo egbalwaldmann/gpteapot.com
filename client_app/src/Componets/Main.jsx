@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { PostQustionToChatGPT } from "../services/chatGPTAPI";
-import { getEmails, deleteEmail } from "../services/emailAPI";
+import { Email } from "./Email";
+
 const Main = () => {
-  const [getEmail, SetGetEmail] = useState([]);
   //*
   let SpeechRecognition =
     window.webkitSpeechRecognition || window.SpeechRecognition;
-  let SpeechGrammarList =
-    window.SpeechGrammarList || window.webkitSpeechGrammarList;
 
   let recognition = new SpeechRecognition();
 
@@ -52,68 +50,10 @@ const Main = () => {
     console.log(textareaValue);
   }, [getVoice]);
 
-  //* handel Emails
-  useEffect(() => {
-    getEmails(SetGetEmail);
-  }, []);
-  const [showUpdateInput, SetShowUpdateInput] = useState(false);
-  const [getValueUpdateInput, SetValueUpdateInput] = useState("");
-  console.log(getEmail);
-  const UpdateEmail = () => {
-    SetShowUpdateInput(!showUpdateInput);
-  };
-  console.log(showUpdateInput);
-  console.log(getValueUpdateInput);
-
-  const HandelereSubmit = (event) => {
-    event.preventDefault();
-    console.log("hi");
-    //send input value to api
-  };
   return (
     <div>
       <h1>gpteapot.com</h1>
-      {getEmail.length > 0 ? (
-        getEmail.map((items) => {
-          return (
-            <div key={items._id}>
-              {items.email}
-              <button
-                onClick={() => {
-                  deleteEmail(items._id, SetGetEmail);
-                }}
-              >
-                Delete Email
-              </button>
-              <button
-                onClick={() => {
-                  UpdateEmail(items._id, SetGetEmail);
-                }}
-              >
-                Update Email
-              </button>
-            </div>
-          );
-        })
-      ) : (
-        <h3>There is no email</h3>
-      )}
-
-      {/* <h1>{import.meta.env.MY_SECRET_KEY}</h1> */}
-      {/* this textarea for taking voice */}
-      {showUpdateInput && (
-        <>
-          <form action="" method="post" onSubmit={HandelereSubmit}>
-            <input
-              type="text"
-              onChange={(event) => {
-                SetValueUpdateInput(event.target.value);
-              }}
-            />
-            <button type="submit">submit</button>
-          </form>
-        </>
-      )}
+      <Email />
       <textarea
         name=""
         id=""

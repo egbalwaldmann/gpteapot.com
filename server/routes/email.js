@@ -20,7 +20,7 @@ router.post("/postEmail", async (req, res) => {
     newEmail = await newEmail.save();
 
     if (emails) {
-      res.status(404).send("we have this emails try for other name");
+      res.status(404).send("We have this email, try for another name.");
       return null;
     }
 
@@ -47,7 +47,7 @@ router.delete("/deleteEmail/:id", async (req, res) => {
   try {
     const emails = await emailModel.findByIdAndRemove(req.params.id);
     if (!emails) {
-      return res.status(404).send("we cant found this id");
+      return res.status(404).send("We can not find this id.");
     }
     res.send(emails);
   } catch (ex) {
@@ -69,7 +69,7 @@ router.put("/update/:id", async (req, res) => {
       }
     );
     if (!newEmail) {
-      return res.status(404).send("we cant found this id");
+      return res.status(404).send("We can not find this id.");
     }
     res.send(newEmail);
   } catch (ex) {

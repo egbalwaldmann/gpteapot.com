@@ -21,8 +21,5 @@ export const PostQustionToChatGPT = async (
   const response = await fetch(url, requestOptions);
   const data = await response.json();
   await SetResultChatGPT(data);
-  // fetch(url, requestOptions)
-  //   .then((response) => response.text())
-  //   .then((result) => SetResultChatGPT(result))
-  //   .catch((error) => console.log("error", error));
+
 };

@@ -21,9 +21,9 @@ const LinkedinAuth = () => {
         }}
       >
         <Link
-          to={
-            `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${import.meta.env.VITE_VERCEL_ENV_LINKEDIN_CLIENT_ID}&redirect_uri=https://app.gpteapot.com/&state=foobar&scope=r_liteprofile%20r_emailaddress%20w_member_social`
-          }
+          to={`https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${
+            import.meta.env.VITE_VERCEL_ENV_LINKEDIN_CLIENT_ID
+          }&redirect_uri=https://app.gpteapot.com/&state=foobar&scope=r_liteprofile%20r_emailaddress%20w_member_social`}
         >
           <div type="submit" style={{ height: "40px", width: "215px" }}>
             <img
@@ -36,7 +36,14 @@ const LinkedinAuth = () => {
           </div>
         </Link>
       </div>
-      <p>Imprint | Privacy | GitHub</p>
+      <p>
+        Imprint | Privacy |
+        <span style={{marginLeft: "4px", display: "inline-block"}}>
+          <Link to={`https://github.com/egbalwaldmann/gpteapot.com`}>
+            GitHub
+          </Link>
+        </span>
+      </p>
     </div>
   );
 };
