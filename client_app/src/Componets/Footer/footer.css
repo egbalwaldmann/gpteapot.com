@@ -1,7 +1,16 @@
 footer {
   background-color: gray;
-  padding: 15px;
+
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+}
+footer > div {
+  font-size: 35px;
+  text-align: center;
+  width: fit-content;
+  padding: 15px;
 }

@@ -5,7 +5,9 @@ myHeaders.append(
 );
 myHeaders.append("Content-Type", "application/json");
 
+//?old
 // const url = "https://api.openai.com/v1/completions";
+//?trubo
 const url = "https://api.openai.com/v1/chat/completions";
 export const PostQustionToChatGPT = async (
   raw,

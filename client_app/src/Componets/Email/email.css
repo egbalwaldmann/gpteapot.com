@@ -1,0 +1,49 @@
+button {
+  padding: 5px;
+  border: none;
+  margin: 5px;
+  width: 120px;
+  font-size: 1rem;
+  border-radius: 2px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.delete {
+  background: rgb(163, 48, 71);
+  color: #ffff;
+}
+.parent-Emailform {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.parent-Emailform > form {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.parent-Emailform > form > input {
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  border: 1px solid rgba(128, 128, 128, 0.515);
+}
+.parent-Emailform > form > input::placeholder {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.parenet-btnsAndEmailText {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.EmailText {
+  width: fit-content;
+  margin-left: 5px;
+  margin-bottom: 15px;
+  padding: 5px;
+}

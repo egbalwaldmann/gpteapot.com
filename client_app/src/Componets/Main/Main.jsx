@@ -1,56 +1,69 @@
 import { useState, useEffect } from "react";
 import { PostQustionToChatGPT } from "../../services/chatGPTAPI";
-import { Email } from "../Email/Email";
-import { Header } from "../Header/Header";
-import { Button } from "../Button/Button";
+
 import "./main.css";
 import styled from "styled-components";
 import { Footer } from "../Footer/Footer";
+import { RightMenu } from "../RightMenu/RightMenu";
 
 const Textarea = styled.textarea`
-  border: none;
   resize: none;
-  opacity: none;
-  visibility: hidden;
-  width: 1px;
-  height: 1px;
+  margin: 10px;
+  padding: 15px;
+  font-size: 1.5rem;
+  border: 1px solid rgba(128, 128, 128, 0.511);
+  border-radius: 5px;
+  width: 100%;
+  height: 100px;
+  max-width: 250px;
 `;
 
 const Main = () => {
+  const [activeListenButton, SetActiveListenButton] = useState(true);
   let SpeechRecognition =
     window.webkitSpeechRecognition || window.SpeechRecognition;
   let recognition = new SpeechRecognition();
-
   recognition.lang = "en-US";
   recognition.continuous = false;
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
+
   const renderSpeech = () => {
     recognition.start();
     recognition.onresult = (event) => {
       //handle result in here
       let word = event.results[0][0].transcript;
-      console.log(word);
+      console.log(word, "this word");
+      recognition.onend = () => {
+        SetActiveListenButton(false);
+      };
       SetVoice(word);
     };
   };
 
   const [resultChatGPT, SetResultChatGPT] = useState();
   const [textareaValue, SetTextareaValue] = useState(false);
-
+  const [showRightMenu, SetshowRightMenu] = useState(false);
   let Speech = new SpeechSynthesisUtterance();
 
   const [getVoice, SetVoice] = useState("");
 
   let data;
   if (resultChatGPT) {
+    // console.log(resultChatGPT.choices[0].text, "this result");
+    // Speech.text = resultChatGPT.choices[0].text;
+    // console.log(data, "this reuslt");
+    //?trubo model
     console.log(
       resultChatGPT.choices[0].message.content,
       "result in if"
     );
+
+    //?trubo model
     data = resultChatGPT.choices[0].message.content;
+
+    //?trubo model
     Speech.text = data;
-    console.log(data, "this reuslt");
   }
   useEffect(() => {
     console.log(import.meta.env.VITE_SOME_KEY);
@@ -62,26 +75,19 @@ const Main = () => {
       temperature: 0.5,
     });
     PostQustionToChatGPT(raw, SetResultChatGPT);
+
     SetTextareaValue(true);
     console.log(textareaValue);
   }, [getVoice]);
 
   return (
     <div className="main">
-      <Header />
-      <Email />
-      <Textarea
-        type="hidden"
-        name=""
-        id=""
-        cols="30"
-        rows="10"
-        value={getVoice}
-        onChange={(event) => {
-          SetVoice(event.target.value);
-        }}
-      ></Textarea>
-      <div className="Parent-ListenAndSpeekBtns">
+      <RightMenu
+        active={showRightMenu}
+        setActive={SetshowRightMenu}
+      />
+
+      <div className="Parent-ListenAndSpeekBtns ">
         <button
           className="btn-Speak"
           onClick={() => {
@@ -90,16 +96,27 @@ const Main = () => {
         >
           Speak 🎤
         </button>
+        <Textarea
+          type="hidden"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          value={getVoice}
+          onChange={(event) => {
+            SetVoice(event.target.value);
+          }}
+        ></Textarea>
         <button
-          className="btn-Listen"
           onClick={() => {
             speechSynthesis.speak(Speech);
           }}
+          disabled={activeListenButton}
         >
           Listen 🔊
         </button>
       </div>
-      <Textarea name="" id="" cols="30" rows="10"></Textarea>
+      <Footer active={showRightMenu} setActive={SetshowRightMenu} />
     </div>
   );
 };

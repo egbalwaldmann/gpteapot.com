@@ -18,3 +18,11 @@ h5,
 h6 {
   font-family: "Concert One";
 }
+a {
+  text-decoration: none;
+  font-family: "PT Sans";
+}
+ul,
+li {
+  list-style-type: none;
+}

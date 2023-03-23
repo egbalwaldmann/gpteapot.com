@@ -1,0 +1,29 @@
+.RightMenu {
+  position: fixed;
+  z-index: 2;
+  background-color: rgb(107, 170, 162);
+  width: 100%;
+  height: 100vh;
+}
+
+@media screen and (min-width: 768px) {
+  .RightMenu {
+    width: 40%;
+  }
+}
+@media screen and (min-width: 900px) {
+  .RightMenu {
+    width: 34%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .RightMenu {
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 1316px) {
+  .RightMenu {
+    width: 25%;
+  }
+}

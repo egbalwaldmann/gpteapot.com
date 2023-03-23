@@ -6,7 +6,7 @@ import {
 } from "../../services/emailAPI";
 
 import React, { useState, useEffect } from "react";
-
+import "./email.css";
 export const Email = () => {
   const [getEmail, SetGetEmail] = useState([]);
   const [showUpdateInput, SetShowUpdateInput] = useState(false);
@@ -59,39 +59,53 @@ export const Email = () => {
   };
 
   return (
-    <div>
+    <div className="parent-Emailform">
       {/* send email */}
       <form method="post" onSubmit={handelSubmitFormEmail}>
-        <input type="text" placeholder="email@.com" />
+        <input type="email" required placeholder="email@.com" />
         <button type="submit">send email</button>
       </form>
       {/* Show Email and Buttons Delete and Update */}
       {getEmail.length > 0 ? (
         getEmail.map((items) => {
           return (
-            <div key={items._id}>
-              {items.email}
-              <button
-                onClick={() => {
-                  deleteEmail(items._id, SetGetEmail).then(() => {
-                    window.location.reload();
-                  });
-                }}
-              >
-                Delete Email
-              </button>
-            </div>
+            <section
+              key={items._id}
+              className="parenet-btnsAndEmailText"
+            >
+              <div className="EmailText">
+                <h3>
+                  Your Email : <span>{items.email}</span>{" "}
+                </h3>
+              </div>
+
+              <div>
+                <button
+                  className="delete"
+                  onClick={() => {
+                    deleteEmail(items._id, SetGetEmail).then(() => {
+                      window.location.reload();
+                    });
+                  }}
+                >
+                  Delete Email
+                </button>
+                <button onClick={showInputUpdate}>
+                  set new email
+                </button>
+              </div>
+            </section>
           );
         })
       ) : (
         <h3>There is no email</h3>
       )}
-      <button onClick={showInputUpdate}>set new email</button>
+
       {showUpdateInput && (
         <>
           {/* form for update email */}
           <form action="" method="post" onSubmit={handelUpdateEmail}>
-            <input type="text" />
+            <input type="email" required />
             <button type="submit">submit</button>
           </form>
         </>
