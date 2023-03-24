@@ -16,6 +16,9 @@ const Textarea = styled.textarea`
   width: 100%;
   height: 100px;
   max-width: 250px;
+  @media (min-width: 768px) {
+    max-width: 350px;
+  }
 `;
 
 const Main = () => {
@@ -30,6 +33,9 @@ const Main = () => {
 
   const renderSpeech = () => {
     recognition.start();
+    recognition.onstart = () => {
+      SetActiveListenButton(true);
+    };
     recognition.onresult = (event) => {
       //handle result in here
       let word = event.results[0][0].transcript;
@@ -82,11 +88,6 @@ const Main = () => {
 
   return (
     <div className="main">
-      <RightMenu
-        active={showRightMenu}
-        setActive={SetshowRightMenu}
-      />
-
       <div className="Parent-ListenAndSpeekBtns ">
         <button
           className="btn-Speak"
@@ -103,6 +104,7 @@ const Main = () => {
           cols="30"
           rows="10"
           value={getVoice}
+          readOnly
           onChange={(event) => {
             SetVoice(event.target.value);
           }}
@@ -116,7 +118,6 @@ const Main = () => {
           Listen 🔊
         </button>
       </div>
-      <Footer active={showRightMenu} setActive={SetshowRightMenu} />
     </div>
   );
 };

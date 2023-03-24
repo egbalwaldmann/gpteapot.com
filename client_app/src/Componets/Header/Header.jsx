@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 import "./hedaer.css";
 const Title = styled.h1`
   text-align: center;
-  color: #d8d8d8;
+  color: #292f44;
+  padding: 10px;
 `;
 const TopHeader = styled.header``;
 export const Header = () => {
   return (
     <header className="TopHeader">
+      <Title>gpteapot.com</Title>
       <menu>
         <nav>
           <ul>
-            <li>
-              <Title>gpteapot.com</Title>
-            </li>
+            <li></li>
             <li>
               <Link to="/">Home</Link>
             </li>
