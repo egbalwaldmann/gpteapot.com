@@ -87,7 +87,8 @@ const Main = () => {
     let raw = JSON.stringify({
       // prompt: getVoice,
       messages: [{ role: "user", content: getVoice }],
-      model: "gpt-3.5-turbo",
+      // model: "gpt-3.5-turbo",
+      model: "gpt-4",
       // model: "text-davinci-003",
       temperature: 0.5,
     });
