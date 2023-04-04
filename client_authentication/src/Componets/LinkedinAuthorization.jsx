@@ -1,18 +1,23 @@
 import { Link } from "react-router-dom";
-import GreenTeapot from "../assets/GreenTeapot.jpeg";
+// import GreenTeapot from "../assets/GreenTeapot.jpeg";
+import Gpteapot from "../assets/Gpteapot.jpg";
 
 const LinkedinAuth = () => {
   return (
     <div>
       <h1>gpteapot.com</h1>
-
+{/* 
       <img
         src={GreenTeapot}
         alt={"Teapot"}
         style={{ width: "100px", height: "auto" }}
+      /> */}
+      <img
+        src={Gpteapot}
+        alt={"Teapot"}
+        style={{ width: "300px", height: "auto" }}
       />
-
-      <p>Your sociable AI chatbot!</p>
+      <p>A voice-based AI chatbot!</p>
       <div
         style={{
           display: "flex",

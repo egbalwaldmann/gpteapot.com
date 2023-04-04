@@ -22,8 +22,25 @@
   background-color: cornflowerblue;
   color: #fff;
 }
+
+.photo {
+  width: 100%;
+  /* border: 2px solid red; */
+  text-align: center;
+  padding: 10px;
+}
+
+.photo > img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
 @media screen and (min-width: 768px) {
   .Parent-ListenAndSpeekBtns > button {
     max-width: 350px;
+  }
+  .photo > img {
+    width: 15%;
   }
 }
